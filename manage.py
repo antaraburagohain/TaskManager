@@ -1,6 +1,6 @@
 import os
 import unittest
-
+# Dummy copy
 from flask_migrate import Migrate, MigrateCommand
 from flask_script import Manager
 from app.main.model import user
