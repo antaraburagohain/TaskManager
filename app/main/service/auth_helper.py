@@ -1,4 +1,5 @@
 from app.main.model.user import User
+from flask import make_response
 
 
 class Auth:
@@ -11,14 +12,15 @@ class Auth:
             if user and user.check_password(data.get('password')):
                 auth_token = user.encode_auth_token(user.public_id)
                 if auth_token:
-                    print(user.public_id)
                     response_object = {
                         'Email': data.get('email'),
                         'Public_Id': user.public_id,
                         'Status': 'Success',
-                        'Message': 'Successfully logged in.'
+                        'Message': 'Successfully logged in.',
                     }
-                    return response_object, 200
+
+                    return response_object
+
             else:
                 response_object = {
                     'status': 'fail',
